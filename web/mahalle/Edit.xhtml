@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMahalleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMahalleLabel_mahID}" for="mahID" />
+                    <h:inputText id="mahID" value="#{mahalleController.selected.mahID}" title="#{bundle.EditMahalleTitle_mahID}" required="true" requiredMessage="#{bundle.EditMahalleRequiredMessage_mahID}"/>
+                    <h:outputLabel value="#{bundle.EditMahalleLabel_mahIsmi}" for="mahIsmi" />
+                    <h:inputText id="mahIsmi" value="#{mahalleController.selected.mahIsmi}" title="#{bundle.EditMahalleTitle_mahIsmi}" required="true" requiredMessage="#{bundle.EditMahalleRequiredMessage_mahIsmi}"/>
+                    <h:outputLabel value="#{bundle.EditMahalleLabel_semID}" for="semID" />
+                    <h:inputText id="semID" value="#{mahalleController.selected.semID}" title="#{bundle.EditMahalleTitle_semID}" required="true" requiredMessage="#{bundle.EditMahalleRequiredMessage_semID}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{mahalleController.update}" value="#{bundle.EditMahalleSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMahalleViewLink}"/>
+                <br />
+                <h:commandLink action="#{mahalleController.prepareList}" value="#{bundle.EditMahalleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMahalleIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

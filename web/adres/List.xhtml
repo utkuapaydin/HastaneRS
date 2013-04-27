@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAdresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAdresEmpty}" rendered="#{adresController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{adresController.items.rowCount > 0}">
+                    <h:outputText value="#{adresController.pagination.pageFirstItem + 1}..#{adresController.pagination.pageLastItem + 1}/#{adresController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{adresController.previous}" value="#{bundle.Previous} #{adresController.pagination.pageSize}" rendered="#{adresController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{adresController.next}" value="#{bundle.Next} #{adresController.pagination.pageSize}" rendered="#{adresController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{adresController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdresTitle_adrID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adrID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdresTitle_adrSehir}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adrSehir}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdresTitle_adrIlce}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adrIlce}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdresTitle_adrMahalle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adrMahalle}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdresTitle_adrDetay}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adrDetay}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAdresTitle_adrAktif}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adrAktif}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{adresController.prepareView}" value="#{bundle.ListAdresViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{adresController.prepareEdit}" value="#{bundle.ListAdresEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{adresController.destroy}" value="#{bundle.ListAdresDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{adresController.prepareCreate}" value="#{bundle.ListAdresCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAdresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

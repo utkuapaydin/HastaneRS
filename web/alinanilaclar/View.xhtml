@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAlinanilaclarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAlinanilaclarLabel_aiId}"/>
+                    <h:outputText value="#{alinanilaclarController.selected.aiId}" title="#{bundle.ViewAlinanilaclarTitle_aiId}"/>
+                    <h:outputText value="#{bundle.ViewAlinanilaclarLabel_IId}"/>
+                    <h:outputText value="#{alinanilaclarController.selected.IId}" title="#{bundle.ViewAlinanilaclarTitle_IId}"/>
+                    <h:outputText value="#{bundle.ViewAlinanilaclarLabel_HTc}"/>
+                    <h:outputText value="#{alinanilaclarController.selected.HTc}" title="#{bundle.ViewAlinanilaclarTitle_HTc}"/>
+                    <h:outputText value="#{bundle.ViewAlinanilaclarLabel_AIZamani}"/>
+                    <h:outputText value="#{alinanilaclarController.selected.AIZamani}" title="#{bundle.ViewAlinanilaclarTitle_AIZamani}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{alinanilaclarController.destroyAndView}" value="#{bundle.ViewAlinanilaclarDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAlinanilaclarEditLink}"/>
+                <br />
+                <h:commandLink action="#{alinanilaclarController.prepareCreate}" value="#{bundle.ViewAlinanilaclarCreateLink}" />
+                <br />
+                <h:commandLink action="#{alinanilaclarController.prepareList}" value="#{bundle.ViewAlinanilaclarShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAlinanilaclarIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

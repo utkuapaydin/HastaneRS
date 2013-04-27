@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>HRS - Ana Sayfa</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800' rel='stylesheet' type='text/css' />
+<link href="./css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="./css/ipad.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="./css/responsive.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="./css/mobile.css" rel="stylesheet" media="screen" type="text/css" />
+
+<!--[if lt IE 7]><link rel="stylesheet" href="css/style-ie-lt7.css" type="text/css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="css/style-ie7.css" type="text/css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" href="css/style-ie8.css" type="text/css" /><![endif]-->
+<!--[if IE 9]><link rel="stylesheet" href="css/style-ie-gt8.css" type="text/css" /><![endif]-->
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/jquery.fancydropdown.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+
+<!-- Scrolling Script -->
+<link href="../css/jquery.mCustomScrollbar.css" rel="stylesheet" media="screen" type="text/css" />
+<script type="text/javascript" src="../js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="../js/jquery.mCustomScrollbar.js"></script>
+
+<!-- Custom Slide -->
+<script type="text/javascript" src="../js/modernizr.custom.04022.js"></script>
+<link href="../css/parallax.css" rel="stylesheet" media="screen" type="text/css" />
+<script type="text/javascript" src="../js/customSlide.js"></script>
+<link href="../css/customSlide.html" rel="stylesheet" media="screen" type="text/css" />
+
+</h:head>
+
+<body>
+<!-- Main Container -->
+<div id="main-container"> 
+    <ui:include src="/Header.xhtml" />
+              <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HTc}" for="HTc" />
+                    <h:inputText id="HTc" value="#{hesapController.selected.HTc}" title="#{bundle.CreateHesapTitle_HTc}" required="true" requiredMessage="#{bundle.CreateHesapRequiredMessage_HTc}"/>
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HAdresi}" for="HAdresi" />
+                    <h:inputText id="HAdresi" value="#{hesapController.selected.HAdresi}" title="#{bundle.CreateHesapTitle_HAdresi}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HIsmi}" for="HIsmi" />
+                    <h:inputText id="HIsmi" value="#{hesapController.selected.HIsmi}" title="#{bundle.CreateHesapTitle_HIsmi}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HSoyismi}" for="HSoyismi" />
+                    <h:inputSecret id="HSoyismi" value="#{hesapController.selected.HSoyismi}" title="#{bundle.CreateHesapTitle_HSoyismi}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HSifre}" for="HSifre" />
+                    <h:inputText id="HSifre" value="#{hesapController.selected.HSifre}" title="#{bundle.CreateHesapTitle_HSifre}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HEmail}" for="HEmail" />
+                    <h:inputText id="HEmail" value="#{hesapController.selected.HEmail}" title="#{bundle.CreateHesapTitle_HEmail}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HDogumtarihi}" for="HDogumtarihi" />
+
+                    <p:calendar title="Doğum tarihinizi seçiniz" value="#{hesapController.selected.HDogumtarihi}" id="popupCal" />  
+                    <p:dialog header="Selected Dates" widgetVar="dialog"   
+                            showEffect="fade" hideEffect="fade">  
+                        <h:panelGrid id="display" columns="2" cellpadding="5">  
+
+                            <h:outputText value="Popup Date:" />  
+                            <h:outputText value="#{calendarBean.date2}" id="popupDate">  
+                                <f:convertDateTime pattern="d/M/yyyy"/>  
+                            </h:outputText>  
+
+                        </h:panelGrid>  
+
+                    </p:dialog>  
+                    <br/>
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HIrk}" for="HIrk" />
+                        <p:selectOneMenu  value="#{hesapController.selected.HIrk}">  
+                            <f:selectItem itemLabel="Irkınızı Seçiniz" itemValue="" />  
+                            <f:selectItem itemLabel="Siyahi" itemValue="1" />  
+                            <f:selectItem itemLabel="Beyaz" itemValue="2" />  
+                        </p:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HCinsiyet}" for="HCinsiyet" />
+          
+                    <p:selectOneMenu  value="#{hesapController.selected.HCinsiyet}">  
+                            <f:selectItem itemLabel="Cinsiyetinizi Seçiniz" itemValue="" />  
+                            <f:selectItem itemLabel="Kadın" itemValue="1" />  
+                            <f:selectItem itemLabel="Erkek" itemValue="2" />  
+                        </p:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{hesapController.create}" value="#{bundle.CreateHesapSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{hesapController.prepareList}" value="#{bundle.CreateHesapShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateHesapIndexLink}"/>
+            </h:form>
+    <ui:include src="/footer.xhtml" />
+  
+</div>
+<img src="#" id="preloading" class="hidden" alt="" />
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDoktorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDoktorEmpty}" rendered="#{doktorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{doktorController.items.rowCount > 0}">
+                    <h:outputText value="#{doktorController.pagination.pageFirstItem + 1}..#{doktorController.pagination.pageLastItem + 1}/#{doktorController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{doktorController.previous}" value="#{bundle.Previous} #{doktorController.pagination.pageSize}" rendered="#{doktorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{doktorController.next}" value="#{bundle.Next} #{doktorController.pagination.pageSize}" rendered="#{doktorController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{doktorController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDoktorTitle_DId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.DId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDoktorTitle_DHesabi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.DHesabi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDoktorTitle_DUnvan}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.DUnvan}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDoktorTitle_HDepID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HDepID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{doktorController.prepareView}" value="#{bundle.ListDoktorViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{doktorController.prepareEdit}" value="#{bundle.ListDoktorEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{doktorController.destroy}" value="#{bundle.ListDoktorDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{doktorController.prepareCreate}" value="#{bundle.ListDoktorCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDoktorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

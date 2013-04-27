@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800' rel='stylesheet' type='text/css' />
+<link href="../css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="../css/ipad.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="../css/responsive.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="../css/mobile.css" rel="stylesheet" media="screen" type="text/css" />
+
+<!--[if lt IE 7]><link rel="stylesheet" href="css/style-ie-lt7.css" type="text/css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="css/style-ie7.css" type="text/css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" href="css/style-ie8.css" type="text/css" /><![endif]-->
+<!--[if IE 9]><link rel="stylesheet" href="css/style-ie-gt8.css" type="text/css" /><![endif]-->
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/jquery.fancydropdown.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+
+<!-- Scrolling Script -->
+<link href="../css/jquery.mCustomScrollbar.css" rel="stylesheet" media="screen" type="text/css" />
+<script type="text/javascript" src="../js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="../js/jquery.mCustomScrollbar.js"></script>
+
+<!-- Custom Slide -->
+<script type="text/javascript" src="../js/modernizr.custom.04022.js"></script>
+<link href="../css/parallax.css" rel="stylesheet" media="screen" type="text/css" />
+<script type="text/javascript" src="../js/customSlide.js"></script>
+<link href="../css/customSlide.html" rel="stylesheet" media="screen" type="text/css" />
+
+</h:head>
+    <h:body>
+        <div id="main-container"> 
+        
+        <ui:include src="/Header.xhtml"/>
+                        <div class="gray_gradient"> 
+                            <div id="signin_menu">
+                                
+                                    <h:form>
+
+                                        <h:outputLabel class="comments" value="Tc Kimlik Numarasi" />
+                                          <h:inputText id="HTc" class="textbox" 
+                                                   value="#{hesapController.selected.HTc}" 
+                                                   required="true" 
+                                                   onfocus="if(this.value == 'Tc Kimlik Numarasi') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Tc Kimlik Numarasi'; }" />
+                                          <br/>
+                                         <h:outputLabel class="comments" value="Şifre" />
+                                      <h:inputSecret class="textbox" id="HSifre"  
+                                                   value="#{hesapController.selected.HSifre}" 
+                                                    onfocus="if(this.value == '**************') { this.value = ''; }" onblur="if(this.value == '') { this.value = '**************'; }" />  <br/>
+                                      <h:panelGroup layout="block" class="signinStrip">
+                                        <input id="remember" name="remember_me" value="1" type="checkbox" />
+                                        <label for="remember">Beni Hatırla</label>
+                                        <span class="forgot"> <a href="#" id="resend_password_link">Şifremi hatırlat</a> </span>
+                                        <h:commandButton value="Giriş" class="signin_submit"  type="submit" action="#{hesapController.login()}"  />
+                                      </h:panelGroup>
+                                      <br/>
+                                    </h:form>
+                                
+                            </div>
+                        </div>
+        </div>
+        <ui:include src="/footer.xhtml"/>
+    </h:body>
+</html>
+

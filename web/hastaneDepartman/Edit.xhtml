@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditHastaneDepartmanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditHastaneDepartmanLabel_HDepID}" for="HDepID" />
+                    <h:inputText id="HDepID" value="#{hastaneDepartmanController.selected.HDepID}" title="#{bundle.EditHastaneDepartmanTitle_HDepID}" required="true" requiredMessage="#{bundle.EditHastaneDepartmanRequiredMessage_HDepID}"/>
+                    <h:outputLabel value="#{bundle.EditHastaneDepartmanLabel_hasId}" for="hasId" />
+                    <h:inputText id="hasId" value="#{hastaneDepartmanController.selected.hasId}" title="#{bundle.EditHastaneDepartmanTitle_hasId}" required="true" requiredMessage="#{bundle.EditHastaneDepartmanRequiredMessage_hasId}"/>
+                    <h:outputLabel value="#{bundle.EditHastaneDepartmanLabel_depID}" for="depID" />
+                    <h:inputText id="depID" value="#{hastaneDepartmanController.selected.depID}" title="#{bundle.EditHastaneDepartmanTitle_depID}" required="true" requiredMessage="#{bundle.EditHastaneDepartmanRequiredMessage_depID}"/>
+                    <h:outputLabel value="#{bundle.EditHastaneDepartmanLabel_HDepOlusturan}" for="HDepOlusturan" />
+                    <h:inputText id="HDepOlusturan" value="#{hastaneDepartmanController.selected.HDepOlusturan}" title="#{bundle.EditHastaneDepartmanTitle_HDepOlusturan}" required="true" requiredMessage="#{bundle.EditHastaneDepartmanRequiredMessage_HDepOlusturan}"/>
+                    <h:outputLabel value="#{bundle.EditHastaneDepartmanLabel_HDepOlusZamani}" for="HDepOlusZamani" />
+                    <h:inputText id="HDepOlusZamani" value="#{hastaneDepartmanController.selected.HDepOlusZamani}" title="#{bundle.EditHastaneDepartmanTitle_HDepOlusZamani}" required="true" requiredMessage="#{bundle.EditHastaneDepartmanRequiredMessage_HDepOlusZamani}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{hastaneDepartmanController.update}" value="#{bundle.EditHastaneDepartmanSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditHastaneDepartmanViewLink}"/>
+                <br />
+                <h:commandLink action="#{hastaneDepartmanController.prepareList}" value="#{bundle.EditHastaneDepartmanShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditHastaneDepartmanIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRezervasyonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRezervasyonLabel_RId}"/>
+                    <h:outputText value="#{rezervasyonController.selected.RId}" title="#{bundle.ViewRezervasyonTitle_RId}"/>
+                    <h:outputText value="#{bundle.ViewRezervasyonLabel_DId}"/>
+                    <h:outputText value="#{rezervasyonController.selected.DId}" title="#{bundle.ViewRezervasyonTitle_DId}"/>
+                    <h:outputText value="#{bundle.ViewRezervasyonLabel_HTc}"/>
+                    <h:outputText value="#{rezervasyonController.selected.HTc}" title="#{bundle.ViewRezervasyonTitle_HTc}"/>
+                    <h:outputText value="#{bundle.ViewRezervasyonLabel_RNo}"/>
+                    <h:outputText value="#{rezervasyonController.selected.RNo}" title="#{bundle.ViewRezervasyonTitle_RNo}"/>
+                    <h:outputText value="#{bundle.ViewRezervasyonLabel_ROlasiHastalik}"/>
+                    <h:outputText value="#{rezervasyonController.selected.ROlasiHastalik}" title="#{bundle.ViewRezervasyonTitle_ROlasiHastalik}"/>
+                    <h:outputText value="#{bundle.ViewRezervasyonLabel_ROlusturmaZamani}"/>
+                    <h:outputText value="#{rezervasyonController.selected.ROlusturmaZamani}" title="#{bundle.ViewRezervasyonTitle_ROlusturmaZamani}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rezervasyonController.destroyAndView}" value="#{bundle.ViewRezervasyonDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRezervasyonEditLink}"/>
+                <br />
+                <h:commandLink action="#{rezervasyonController.prepareCreate}" value="#{bundle.ViewRezervasyonCreateLink}" />
+                <br />
+                <h:commandLink action="#{rezervasyonController.prepareList}" value="#{bundle.ViewRezervasyonShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRezervasyonIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

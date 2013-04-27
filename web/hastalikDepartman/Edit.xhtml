@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditHastalikDepartmanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditHastalikDepartmanLabel_hdId}" for="hdId" />
+                    <h:inputText id="hdId" value="#{hastalikDepartmanController.selected.hdId}" title="#{bundle.EditHastalikDepartmanTitle_hdId}" required="true" requiredMessage="#{bundle.EditHastalikDepartmanRequiredMessage_hdId}"/>
+                    <h:outputLabel value="#{bundle.EditHastalikDepartmanLabel_depID}" for="depID" />
+                    <h:inputText id="depID" value="#{hastalikDepartmanController.selected.depID}" title="#{bundle.EditHastalikDepartmanTitle_depID}" required="true" requiredMessage="#{bundle.EditHastalikDepartmanRequiredMessage_depID}"/>
+                    <h:outputLabel value="#{bundle.EditHastalikDepartmanLabel_hasID}" for="hasID" />
+                    <h:inputText id="hasID" value="#{hastalikDepartmanController.selected.hasID}" title="#{bundle.EditHastalikDepartmanTitle_hasID}" required="true" requiredMessage="#{bundle.EditHastalikDepartmanRequiredMessage_hasID}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{hastalikDepartmanController.update}" value="#{bundle.EditHastalikDepartmanSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditHastalikDepartmanViewLink}"/>
+                <br />
+                <h:commandLink action="#{hastalikDepartmanController.prepareList}" value="#{bundle.EditHastalikDepartmanShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditHastalikDepartmanIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.1"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+    <application>
+        <resource-bundle>
+            <base-name>/Bundle</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+    </application>
+    <navigation-rule>
+        
+        
+
+        <navigation-case>
+            <from-outcome>
+                GirisSayfasi
+            </from-outcome>
+            <to-view-id>
+                /hesap/Giris.xhtml
+            </to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>
+                cikisBasarili
+            </from-outcome>
+            <to-view-id>
+                /index.xhtml
+            </to-view-id>
+        </navigation-case>
+        
+        <from-view-id>/hesap/Giris.xhtml</from-view-id>
+        <navigation-case> 
+            <from-outcome>Basarili</from-outcome>
+            
+            <to-view-id>/faces/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+        <from-outcome>HYAnasyafa</from-outcome>
+        <to-view-id>/faces/HastaneY/Anasayfa.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+        <from-outcome>DoktorAnasyafa</from-outcome>
+        <to-view-id>/faces/doktor/Anasayfa.xhtml</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+        <from-outcome>HastaAnasyafa</from-outcome>
+        <to-view-id>/faces/Hasta/Anasayfa.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

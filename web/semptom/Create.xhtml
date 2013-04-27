@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSemptomTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSemptomLabel_sempID}" for="sempID" />
+                    <h:inputText id="sempID" value="#{semptomController.selected.sempID}" title="#{bundle.CreateSemptomTitle_sempID}" required="true" requiredMessage="#{bundle.CreateSemptomRequiredMessage_sempID}"/>
+                    <h:outputLabel value="#{bundle.CreateSemptomLabel_sempIsmi}" for="sempIsmi" />
+                    <h:inputText id="sempIsmi" value="#{semptomController.selected.sempIsmi}" title="#{bundle.CreateSemptomTitle_sempIsmi}" required="true" requiredMessage="#{bundle.CreateSemptomRequiredMessage_sempIsmi}"/>
+                    <h:outputLabel value="#{bundle.CreateSemptomLabel_sempGroup}" for="sempGroup" />
+                    <h:inputText id="sempGroup" value="#{semptomController.selected.sempGroup}" title="#{bundle.CreateSemptomTitle_sempGroup}" required="true" requiredMessage="#{bundle.CreateSemptomRequiredMessage_sempGroup}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{semptomController.create}" value="#{bundle.CreateSemptomSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{semptomController.prepareList}" value="#{bundle.CreateSemptomShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSemptomIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

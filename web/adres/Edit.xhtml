@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAdresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAdresLabel_adrID}" for="adrID" />
+                    <h:inputText id="adrID" value="#{adresController.selected.adrID}" title="#{bundle.EditAdresTitle_adrID}" required="true" requiredMessage="#{bundle.EditAdresRequiredMessage_adrID}"/>
+                    <h:outputLabel value="#{bundle.EditAdresLabel_adrSehir}" for="adrSehir" />
+                    <h:inputText id="adrSehir" value="#{adresController.selected.adrSehir}" title="#{bundle.EditAdresTitle_adrSehir}" required="true" requiredMessage="#{bundle.EditAdresRequiredMessage_adrSehir}"/>
+                    <h:outputLabel value="#{bundle.EditAdresLabel_adrIlce}" for="adrIlce" />
+                    <h:inputText id="adrIlce" value="#{adresController.selected.adrIlce}" title="#{bundle.EditAdresTitle_adrIlce}" required="true" requiredMessage="#{bundle.EditAdresRequiredMessage_adrIlce}"/>
+                    <h:outputLabel value="#{bundle.EditAdresLabel_adrMahalle}" for="adrMahalle" />
+                    <h:inputText id="adrMahalle" value="#{adresController.selected.adrMahalle}" title="#{bundle.EditAdresTitle_adrMahalle}" required="true" requiredMessage="#{bundle.EditAdresRequiredMessage_adrMahalle}"/>
+                    <h:outputLabel value="#{bundle.EditAdresLabel_adrDetay}" for="adrDetay" />
+                    <h:inputText id="adrDetay" value="#{adresController.selected.adrDetay}" title="#{bundle.EditAdresTitle_adrDetay}" required="true" requiredMessage="#{bundle.EditAdresRequiredMessage_adrDetay}"/>
+                    <h:outputLabel value="#{bundle.EditAdresLabel_adrAktif}" for="adrAktif" />
+                    <h:inputText id="adrAktif" value="#{adresController.selected.adrAktif}" title="#{bundle.EditAdresTitle_adrAktif}" required="true" requiredMessage="#{bundle.EditAdresRequiredMessage_adrAktif}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{adresController.update}" value="#{bundle.EditAdresSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAdresViewLink}"/>
+                <br />
+                <h:commandLink action="#{adresController.prepareList}" value="#{bundle.EditAdresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAdresIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

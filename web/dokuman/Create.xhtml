@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDokumanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDokumanLabel_dokID}" for="dokID" />
+                    <h:inputText id="dokID" value="#{dokumanController.selected.dokID}" title="#{bundle.CreateDokumanTitle_dokID}" required="true" requiredMessage="#{bundle.CreateDokumanRequiredMessage_dokID}"/>
+                    <h:outputLabel value="#{bundle.CreateDokumanLabel_dokTip}" for="dokTip" />
+                    <h:inputText id="dokTip" value="#{dokumanController.selected.dokTip}" title="#{bundle.CreateDokumanTitle_dokTip}" required="true" requiredMessage="#{bundle.CreateDokumanRequiredMessage_dokTip}"/>
+                    <h:outputLabel value="#{bundle.CreateDokumanLabel_dokIsmi}" for="dokIsmi" />
+                    <h:inputText id="dokIsmi" value="#{dokumanController.selected.dokIsmi}" title="#{bundle.CreateDokumanTitle_dokIsmi}" required="true" requiredMessage="#{bundle.CreateDokumanRequiredMessage_dokIsmi}"/>
+                    <h:outputLabel value="#{bundle.CreateDokumanLabel_dokSahibi}" for="dokSahibi" />
+                    <h:inputText id="dokSahibi" value="#{dokumanController.selected.dokSahibi}" title="#{bundle.CreateDokumanTitle_dokSahibi}" required="true" requiredMessage="#{bundle.CreateDokumanRequiredMessage_dokSahibi}"/>
+                    <h:outputLabel value="#{bundle.CreateDokumanLabel_dokOlusZamani}" for="dokOlusZamani" />
+                    <h:inputText id="dokOlusZamani" value="#{dokumanController.selected.dokOlusZamani}" title="#{bundle.CreateDokumanTitle_dokOlusZamani}" required="true" requiredMessage="#{bundle.CreateDokumanRequiredMessage_dokOlusZamani}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dokumanController.create}" value="#{bundle.CreateDokumanSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{dokumanController.prepareList}" value="#{bundle.CreateDokumanShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDokumanIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

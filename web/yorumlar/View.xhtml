@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewYorumlarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewYorumlarLabel_yorID}"/>
+                    <h:outputText value="#{yorumlarController.selected.yorID}" title="#{bundle.ViewYorumlarTitle_yorID}"/>
+                    <h:outputText value="#{bundle.ViewYorumlarLabel_yorDetay}"/>
+                    <h:outputText value="#{yorumlarController.selected.yorDetay}" title="#{bundle.ViewYorumlarTitle_yorDetay}"/>
+                    <h:outputText value="#{bundle.ViewYorumlarLabel_yorZamani}"/>
+                    <h:outputText value="#{yorumlarController.selected.yorZamani}" title="#{bundle.ViewYorumlarTitle_yorZamani}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewYorumlarLabel_yorDerecesi}"/>
+                    <h:outputText value="#{yorumlarController.selected.yorDerecesi}" title="#{bundle.ViewYorumlarTitle_yorDerecesi}"/>
+                    <h:outputText value="#{bundle.ViewYorumlarLabel_yorRezervasyon}"/>
+                    <h:outputText value="#{yorumlarController.selected.yorRezervasyon}" title="#{bundle.ViewYorumlarTitle_yorRezervasyon}"/>
+                    <h:outputText value="#{bundle.ViewYorumlarLabel_yorOnay}"/>
+                    <h:outputText value="#{yorumlarController.selected.yorOnay}" title="#{bundle.ViewYorumlarTitle_yorOnay}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{yorumlarController.destroyAndView}" value="#{bundle.ViewYorumlarDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewYorumlarEditLink}"/>
+                <br />
+                <h:commandLink action="#{yorumlarController.prepareCreate}" value="#{bundle.ViewYorumlarCreateLink}" />
+                <br />
+                <h:commandLink action="#{yorumlarController.prepareList}" value="#{bundle.ViewYorumlarShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewYorumlarIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateHesapTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HTc}" for="HTc" />
+                    <h:inputText id="HTc" value="#{hesapController.selected.HTc}" title="#{bundle.CreateHesapTitle_HTc}" required="true" requiredMessage="#{bundle.CreateHesapRequiredMessage_HTc}"/>
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HAdresi}" for="HAdresi" />
+                    <h:inputText id="HAdresi" value="#{hesapController.selected.HAdresi}" title="#{bundle.CreateHesapTitle_HAdresi}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HIsmi}" for="HIsmi" />
+                    <h:inputText id="HIsmi" value="#{hesapController.selected.HIsmi}" title="#{bundle.CreateHesapTitle_HIsmi}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HSoyismi}" for="HSoyismi" />
+                    <h:inputText id="HSoyismi" value="#{hesapController.selected.HSoyismi}" title="#{bundle.CreateHesapTitle_HSoyismi}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HSifre}" for="HSifre" />
+                    <h:inputText id="HSifre" value="#{hesapController.selected.HSifre}" title="#{bundle.CreateHesapTitle_HSifre}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HYetki}" for="HYetki" />
+                    <h:inputText id="HYetki" value="#{hesapController.selected.HYetki}" title="#{bundle.CreateHesapTitle_HYetki}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HEmail}" for="HEmail" />
+                    <h:inputText id="HEmail" value="#{hesapController.selected.HEmail}" title="#{bundle.CreateHesapTitle_HEmail}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HDogumtarihi}" for="HDogumtarihi" />
+                    <h:inputText id="HDogumtarihi" value="#{hesapController.selected.HDogumtarihi}" title="#{bundle.CreateHesapTitle_HDogumtarihi}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HIrk}" for="HIrk" />
+                    <h:inputText id="HIrk" value="#{hesapController.selected.HIrk}" title="#{bundle.CreateHesapTitle_HIrk}" />
+                    <h:outputLabel value="#{bundle.CreateHesapLabel_HCinsiyet}" for="HCinsiyet" />
+                    <h:inputText id="HCinsiyet" value="#{hesapController.selected.HCinsiyet}" title="#{bundle.CreateHesapTitle_HCinsiyet}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{hesapController.create}" value="#{bundle.CreateHesapSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{hesapController.prepareList}" value="#{bundle.CreateHesapShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateHesapIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

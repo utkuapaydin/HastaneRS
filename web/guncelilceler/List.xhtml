@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListGuncelilcelerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListGuncelilcelerEmpty}" rendered="#{guncelilcelerController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{guncelilcelerController.items.rowCount > 0}">
+                    <h:outputText value="#{guncelilcelerController.pagination.pageFirstItem + 1}..#{guncelilcelerController.pagination.pageLastItem + 1}/#{guncelilcelerController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{guncelilcelerController.previous}" value="#{bundle.Previous} #{guncelilcelerController.pagination.pageSize}" rendered="#{guncelilcelerController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{guncelilcelerController.next}" value="#{bundle.Next} #{guncelilcelerController.pagination.pageSize}" rendered="#{guncelilcelerController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{guncelilcelerController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuncelilcelerTitle_ilceID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ilceID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuncelilcelerTitle_ilID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ilID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuncelilcelerTitle_ilce}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ilce}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGuncelilcelerTitle_oylesine}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oylesine}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{guncelilcelerController.prepareView}" value="#{bundle.ListGuncelilcelerViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{guncelilcelerController.prepareEdit}" value="#{bundle.ListGuncelilcelerEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{guncelilcelerController.destroy}" value="#{bundle.ListGuncelilcelerDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{guncelilcelerController.prepareCreate}" value="#{bundle.ListGuncelilcelerCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListGuncelilcelerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

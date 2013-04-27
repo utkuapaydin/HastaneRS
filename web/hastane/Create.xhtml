@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateHastaneTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHastaneLabel_hasID}" for="hasID" />
+                    <h:inputText id="hasID" value="#{hastaneController.selected.hasID}" title="#{bundle.CreateHastaneTitle_hasID}" required="true" requiredMessage="#{bundle.CreateHastaneRequiredMessage_hasID}"/>
+                    <h:outputLabel value="#{bundle.CreateHastaneLabel_hasIsmi}" for="hasIsmi" />
+                    <h:inputText id="hasIsmi" value="#{hastaneController.selected.hasIsmi}" title="#{bundle.CreateHastaneTitle_hasIsmi}" required="true" requiredMessage="#{bundle.CreateHastaneRequiredMessage_hasIsmi}"/>
+                    <h:outputLabel value="#{bundle.CreateHastaneLabel_hasAdres}" for="hasAdres" />
+                    <h:inputText id="hasAdres" value="#{hastaneController.selected.hasAdres}" title="#{bundle.CreateHastaneTitle_hasAdres}" required="true" requiredMessage="#{bundle.CreateHastaneRequiredMessage_hasAdres}"/>
+                    <h:outputLabel value="#{bundle.CreateHastaneLabel_HTc}" for="HTc" />
+                    <h:inputText id="HTc" value="#{hastaneController.selected.HTc}" title="#{bundle.CreateHastaneTitle_HTc}" required="true" requiredMessage="#{bundle.CreateHastaneRequiredMessage_HTc}"/>
+                    <h:outputLabel value="#{bundle.CreateHastaneLabel_hasRezSuresi}" for="hasRezSuresi" />
+                    <h:inputText id="hasRezSuresi" value="#{hastaneController.selected.hasRezSuresi}" title="#{bundle.CreateHastaneTitle_hasRezSuresi}" />
+                    <h:outputLabel value="#{bundle.CreateHastaneLabel_hasOglenBas}" for="hasOglenBas" />
+                    <h:inputText id="hasOglenBas" value="#{hastaneController.selected.hasOglenBas}" title="#{bundle.CreateHastaneTitle_hasOglenBas}" >
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateHastaneLabel_hasOglenBit}" for="hasOglenBit" />
+                    <h:inputText id="hasOglenBit" value="#{hastaneController.selected.hasOglenBit}" title="#{bundle.CreateHastaneTitle_hasOglenBit}" >
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateHastaneLabel_hasMesaiBas}" for="hasMesaiBas" />
+                    <h:inputText id="hasMesaiBas" value="#{hastaneController.selected.hasMesaiBas}" title="#{bundle.CreateHastaneTitle_hasMesaiBas}" >
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateHastaneLabel_hasMesaiBit}" for="hasMesaiBit" />
+                    <h:inputText id="hasMesaiBit" value="#{hastaneController.selected.hasMesaiBit}" title="#{bundle.CreateHastaneTitle_hasMesaiBit}" >
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{hastaneController.create}" value="#{bundle.CreateHastaneSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{hastaneController.prepareList}" value="#{bundle.CreateHastaneShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateHastaneIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

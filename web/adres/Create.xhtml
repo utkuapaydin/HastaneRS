@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAdresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAdresLabel_adrID}" for="adrID" />
+                    <h:inputText id="adrID" value="#{adresController.selected.adrID}" title="#{bundle.CreateAdresTitle_adrID}" required="true" requiredMessage="#{bundle.CreateAdresRequiredMessage_adrID}"/>
+                    <h:outputLabel value="#{bundle.CreateAdresLabel_adrSehir}" for="adrSehir" />
+                    <h:inputText id="adrSehir" value="#{adresController.selected.adrSehir}" title="#{bundle.CreateAdresTitle_adrSehir}" required="true" requiredMessage="#{bundle.CreateAdresRequiredMessage_adrSehir}"/>
+                    <h:outputLabel value="#{bundle.CreateAdresLabel_adrIlce}" for="adrIlce" />
+                    <h:inputText id="adrIlce" value="#{adresController.selected.adrIlce}" title="#{bundle.CreateAdresTitle_adrIlce}" required="true" requiredMessage="#{bundle.CreateAdresRequiredMessage_adrIlce}"/>
+                    <h:outputLabel value="#{bundle.CreateAdresLabel_adrMahalle}" for="adrMahalle" />
+                    <h:inputText id="adrMahalle" value="#{adresController.selected.adrMahalle}" title="#{bundle.CreateAdresTitle_adrMahalle}" required="true" requiredMessage="#{bundle.CreateAdresRequiredMessage_adrMahalle}"/>
+                    <h:outputLabel value="#{bundle.CreateAdresLabel_adrDetay}" for="adrDetay" />
+                    <h:inputText id="adrDetay" value="#{adresController.selected.adrDetay}" title="#{bundle.CreateAdresTitle_adrDetay}" required="true" requiredMessage="#{bundle.CreateAdresRequiredMessage_adrDetay}"/>
+                    <h:outputLabel value="#{bundle.CreateAdresLabel_adrAktif}" for="adrAktif" />
+                    <h:inputText id="adrAktif" value="#{adresController.selected.adrAktif}" title="#{bundle.CreateAdresTitle_adrAktif}" required="true" requiredMessage="#{bundle.CreateAdresRequiredMessage_adrAktif}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{adresController.create}" value="#{bundle.CreateAdresSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{adresController.prepareList}" value="#{bundle.CreateAdresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAdresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

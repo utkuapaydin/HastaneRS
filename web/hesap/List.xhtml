@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHesapTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListHesapEmpty}" rendered="#{hesapController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{hesapController.items.rowCount > 0}">
+                    <h:outputText value="#{hesapController.pagination.pageFirstItem + 1}..#{hesapController.pagination.pageLastItem + 1}/#{hesapController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{hesapController.previous}" value="#{bundle.Previous} #{hesapController.pagination.pageSize}" rendered="#{hesapController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{hesapController.next}" value="#{bundle.Next} #{hesapController.pagination.pageSize}" rendered="#{hesapController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{hesapController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHesapTitle_HTc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HTc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHesapTitle_HAdresi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HAdresi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHesapTitle_HIsmi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HIsmi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHesapTitle_HSoyismi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HSoyismi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHesapTitle_HSifre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HSifre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHesapTitle_HYetki}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HYetki}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHesapTitle_HEmail}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HEmail}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHesapTitle_HDogumtarihi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HDogumtarihi}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHesapTitle_HIrk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HIrk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHesapTitle_HCinsiyet}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HCinsiyet}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{hesapController.prepareView}" value="#{bundle.ListHesapViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{hesapController.prepareEdit}" value="#{bundle.ListHesapEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{hesapController.destroy}" value="#{bundle.ListHesapDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{hesapController.prepareCreate}" value="#{bundle.ListHesapCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListHesapIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

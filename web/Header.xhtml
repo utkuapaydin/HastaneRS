@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800' rel='stylesheet' type='text/css' />
+<link href="../css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="../css/ipad.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="../css/responsive.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="../css/mobile.css" rel="stylesheet" media="screen" type="text/css" />
+
+<!--[if lt IE 7]><link rel="stylesheet" href="css/style-ie-lt7.css" type="text/css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="css/style-ie7.css" type="text/css" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" href="css/style-ie8.css" type="text/css" /><![endif]-->
+<!--[if IE 9]><link rel="stylesheet" href="css/style-ie-gt8.css" type="text/css" /><![endif]-->
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/jquery.fancydropdown.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+
+<!-- Scrolling Script -->
+<link href="../css/jquery.mCustomScrollbar.css" rel="stylesheet" media="screen" type="text/css" />
+<script type="text/javascript" src="../js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="../js/jquery.mCustomScrollbar.js"></script>
+
+<!-- Custom Slide -->
+<script type="text/javascript" src="../js/modernizr.custom.04022.js"></script>
+<link href="../css/parallax.css" rel="stylesheet" media="screen" type="text/css" />
+<script type="text/javascript" src="../js/customSlide.js"></script>
+<link href="../css/customSlide.html" rel="stylesheet" media="screen" type="text/css" />
+
+</h:head>
+    <h:body>
+        <div id="main-container"> 
+<div class="header">
+        <div class="logo"><a href="/HastaneRS/faces/index.xhtml"><img src="./images/logo.png" alt="WelCare" /></a></div>
+        <div class="righthead">
+            <div class="top-menu inline">
+                 <h:form>
+                <ul>
+                          
+                    <h:panelGroup rendered="#{hesapController.loggedIn == false}">
+                    <li class="register"><a href="/HastaneRS/faces/hesap/Kaydol.xhtml">Üye Olun</a></li>
+                     </h:panelGroup>
+                    <h:panelGroup rendered="#{hesapController.loggedIn == false}">
+                       
+                    <li class="signin" > <a href="/HastaneRS/faces/hesap/Giris.xhtml" >Giriş Yapın</a> 
+                            
+                
+                    </li>                        
+                    </h:panelGroup>
+                    <h:panelGroup  rendered="#{hesapController.loggedIn==true}"> 
+                        <li class="signin">
+                     
+                            <h:commandLink rendered="#{hesapController.loggedIn==true}"  actionListener="#{hesapController.logOff()}" 
+                                           >  
+                                <h:outputText value="Çıkış yap" />  
+                            </h:commandLink>  
+                        </li>
+                   </h:panelGroup>
+                    <li class="contact"> <a href="#" id="contact">İletişim</a> 
+                        <!-- Contact Dialog -->
+                        <div id="contactbox" class="gray_gradient"> <img src="images/sign_in_arrow.png" alt="" class="boxArrow" />
+                            <div class="box_heading"> Bize ulaşın <a href="#" class="close"><img id="fadeout" src="images/close.png" alt="" width="16" height="16" /></a> </div>
+                            <h6>İstanbul Ofisi</h6>
+                            <span>09.00-18.00 arası</span>
+                            <div class="coll_left left">Yıldız Mh., 34349 <br />
+                                Beşiktaş/Istanbul<br />
+                                Turkiye</div>
+                            <div class="coll_right right"> Tel:(0212) 381 0000<br />
+                                Fax (0212) 381 0020<br />
+                                Email: admin@hrs.net</div>
+                            <div class="clear"></div>
+                            
+                            <!-- Google Map -->
+                            <div class="google_map margin_bottom margin_top">
+                                <iframe width="301" height="135" src="http://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr=fenway+park&amp;daddr=uk&amp;hl=en&amp;geocode=FYoohgId1STD-yEEVXpkyw2Aog%3BFYMATQMdO5LL_ympkcdCETtaAjF6JYgyQ6D4xA&amp;aq=&amp;sll=43.084937,-73.740234&amp;sspn=9.530831,19.753418&amp;t=h&amp;mra=dme&amp;ie=UTF8&amp;ll=43.084937,-73.740234&amp;spn=2.16612,6.328125&amp;z=6&amp;output=embed"></iframe>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+                </h:form>
+            </div>
+            
+        </div>
+    </div>
+
+        </div>
+    </h:body>
+</html>
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRezervasyonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRezervasyonLabel_RId}" for="RId" />
+                    <h:inputText id="RId" value="#{rezervasyonController.selected.RId}" title="#{bundle.EditRezervasyonTitle_RId}" required="true" requiredMessage="#{bundle.EditRezervasyonRequiredMessage_RId}"/>
+                    <h:outputLabel value="#{bundle.EditRezervasyonLabel_DId}" for="DId" />
+                    <h:inputText id="DId" value="#{rezervasyonController.selected.DId}" title="#{bundle.EditRezervasyonTitle_DId}" required="true" requiredMessage="#{bundle.EditRezervasyonRequiredMessage_DId}"/>
+                    <h:outputLabel value="#{bundle.EditRezervasyonLabel_HTc}" for="HTc" />
+                    <h:inputText id="HTc" value="#{rezervasyonController.selected.HTc}" title="#{bundle.EditRezervasyonTitle_HTc}" required="true" requiredMessage="#{bundle.EditRezervasyonRequiredMessage_HTc}"/>
+                    <h:outputLabel value="#{bundle.EditRezervasyonLabel_RNo}" for="RNo" />
+                    <h:inputText id="RNo" value="#{rezervasyonController.selected.RNo}" title="#{bundle.EditRezervasyonTitle_RNo}" required="true" requiredMessage="#{bundle.EditRezervasyonRequiredMessage_RNo}"/>
+                    <h:outputLabel value="#{bundle.EditRezervasyonLabel_ROlasiHastalik}" for="ROlasiHastalik" />
+                    <h:inputText id="ROlasiHastalik" value="#{rezervasyonController.selected.ROlasiHastalik}" title="#{bundle.EditRezervasyonTitle_ROlasiHastalik}" required="true" requiredMessage="#{bundle.EditRezervasyonRequiredMessage_ROlasiHastalik}"/>
+                    <h:outputLabel value="#{bundle.EditRezervasyonLabel_ROlusturmaZamani}" for="ROlusturmaZamani" />
+                    <h:inputText id="ROlusturmaZamani" value="#{rezervasyonController.selected.ROlusturmaZamani}" title="#{bundle.EditRezervasyonTitle_ROlusturmaZamani}" required="true" requiredMessage="#{bundle.EditRezervasyonRequiredMessage_ROlusturmaZamani}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{rezervasyonController.update}" value="#{bundle.EditRezervasyonSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRezervasyonViewLink}"/>
+                <br />
+                <h:commandLink action="#{rezervasyonController.prepareList}" value="#{bundle.EditRezervasyonShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRezervasyonIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

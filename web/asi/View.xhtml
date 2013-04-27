@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAsiTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAsiLabel_AId}"/>
+                    <h:outputText value="#{asiController.selected.AId}" title="#{bundle.ViewAsiTitle_AId}"/>
+                    <h:outputText value="#{bundle.ViewAsiLabel_AIsmi}"/>
+                    <h:outputText value="#{asiController.selected.AIsmi}" title="#{bundle.ViewAsiTitle_AIsmi}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{asiController.destroyAndView}" value="#{bundle.ViewAsiDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAsiEditLink}"/>
+                <br />
+                <h:commandLink action="#{asiController.prepareCreate}" value="#{bundle.ViewAsiCreateLink}" />
+                <br />
+                <h:commandLink action="#{asiController.prepareList}" value="#{bundle.ViewAsiShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAsiIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

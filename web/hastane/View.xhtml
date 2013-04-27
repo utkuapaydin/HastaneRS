@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewHastaneTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewHastaneLabel_hasID}"/>
+                    <h:outputText value="#{hastaneController.selected.hasID}" title="#{bundle.ViewHastaneTitle_hasID}"/>
+                    <h:outputText value="#{bundle.ViewHastaneLabel_hasIsmi}"/>
+                    <h:outputText value="#{hastaneController.selected.hasIsmi}" title="#{bundle.ViewHastaneTitle_hasIsmi}"/>
+                    <h:outputText value="#{bundle.ViewHastaneLabel_hasAdres}"/>
+                    <h:outputText value="#{hastaneController.selected.hasAdres}" title="#{bundle.ViewHastaneTitle_hasAdres}"/>
+                    <h:outputText value="#{bundle.ViewHastaneLabel_HTc}"/>
+                    <h:outputText value="#{hastaneController.selected.HTc}" title="#{bundle.ViewHastaneTitle_HTc}"/>
+                    <h:outputText value="#{bundle.ViewHastaneLabel_hasRezSuresi}"/>
+                    <h:outputText value="#{hastaneController.selected.hasRezSuresi}" title="#{bundle.ViewHastaneTitle_hasRezSuresi}"/>
+                    <h:outputText value="#{bundle.ViewHastaneLabel_hasOglenBas}"/>
+                    <h:outputText value="#{hastaneController.selected.hasOglenBas}" title="#{bundle.ViewHastaneTitle_hasOglenBas}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHastaneLabel_hasOglenBit}"/>
+                    <h:outputText value="#{hastaneController.selected.hasOglenBit}" title="#{bundle.ViewHastaneTitle_hasOglenBit}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHastaneLabel_hasMesaiBas}"/>
+                    <h:outputText value="#{hastaneController.selected.hasMesaiBas}" title="#{bundle.ViewHastaneTitle_hasMesaiBas}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHastaneLabel_hasMesaiBit}"/>
+                    <h:outputText value="#{hastaneController.selected.hasMesaiBit}" title="#{bundle.ViewHastaneTitle_hasMesaiBit}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{hastaneController.destroyAndView}" value="#{bundle.ViewHastaneDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewHastaneEditLink}"/>
+                <br />
+                <h:commandLink action="#{hastaneController.prepareCreate}" value="#{bundle.ViewHastaneCreateLink}" />
+                <br />
+                <h:commandLink action="#{hastaneController.prepareList}" value="#{bundle.ViewHastaneShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewHastaneIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

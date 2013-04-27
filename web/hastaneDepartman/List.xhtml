@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHastaneDepartmanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListHastaneDepartmanEmpty}" rendered="#{hastaneDepartmanController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{hastaneDepartmanController.items.rowCount > 0}">
+                    <h:outputText value="#{hastaneDepartmanController.pagination.pageFirstItem + 1}..#{hastaneDepartmanController.pagination.pageLastItem + 1}/#{hastaneDepartmanController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{hastaneDepartmanController.previous}" value="#{bundle.Previous} #{hastaneDepartmanController.pagination.pageSize}" rendered="#{hastaneDepartmanController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{hastaneDepartmanController.next}" value="#{bundle.Next} #{hastaneDepartmanController.pagination.pageSize}" rendered="#{hastaneDepartmanController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{hastaneDepartmanController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneDepartmanTitle_HDepID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HDepID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneDepartmanTitle_hasId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hasId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneDepartmanTitle_depID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.depID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneDepartmanTitle_HDepOlusturan}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HDepOlusturan}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneDepartmanTitle_HDepOlusZamani}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HDepOlusZamani}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{hastaneDepartmanController.prepareView}" value="#{bundle.ListHastaneDepartmanViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{hastaneDepartmanController.prepareEdit}" value="#{bundle.ListHastaneDepartmanEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{hastaneDepartmanController.destroy}" value="#{bundle.ListHastaneDepartmanDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{hastaneDepartmanController.prepareCreate}" value="#{bundle.ListHastaneDepartmanCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListHastaneDepartmanIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

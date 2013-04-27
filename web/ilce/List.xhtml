@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListIlceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListIlceEmpty}" rendered="#{ilceController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{ilceController.items.rowCount > 0}">
+                    <h:outputText value="#{ilceController.pagination.pageFirstItem + 1}..#{ilceController.pagination.pageLastItem + 1}/#{ilceController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{ilceController.previous}" value="#{bundle.Previous} #{ilceController.pagination.pageSize}" rendered="#{ilceController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{ilceController.next}" value="#{bundle.Next} #{ilceController.pagination.pageSize}" rendered="#{ilceController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{ilceController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListIlceTitle_ildId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ildId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListIlceTitle_ILCIsmi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ILCIsmi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListIlceTitle_SId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.SId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{ilceController.prepareView}" value="#{bundle.ListIlceViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ilceController.prepareEdit}" value="#{bundle.ListIlceEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ilceController.destroy}" value="#{bundle.ListIlceDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{ilceController.prepareCreate}" value="#{bundle.ListIlceCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListIlceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

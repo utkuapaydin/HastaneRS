@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSssTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSssLabel_sssId}" for="sssId" />
+                    <h:inputText id="sssId" value="#{sssController.selected.sssId}" title="#{bundle.EditSssTitle_sssId}" required="true" requiredMessage="#{bundle.EditSssRequiredMessage_sssId}"/>
+                    <h:outputLabel value="#{bundle.EditSssLabel_SSSSoru}" for="SSSSoru" />
+                    <h:inputText id="SSSSoru" value="#{sssController.selected.SSSSoru}" title="#{bundle.EditSssTitle_SSSSoru}" required="true" requiredMessage="#{bundle.EditSssRequiredMessage_SSSSoru}"/>
+                    <h:outputLabel value="#{bundle.EditSssLabel_SSSCevap}" for="SSSCevap" />
+                    <h:inputText id="SSSCevap" value="#{sssController.selected.SSSCevap}" title="#{bundle.EditSssTitle_SSSCevap}" required="true" requiredMessage="#{bundle.EditSssRequiredMessage_SSSCevap}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{sssController.update}" value="#{bundle.EditSssSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSssViewLink}"/>
+                <br />
+                <h:commandLink action="#{sssController.prepareList}" value="#{bundle.EditSssShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSssIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

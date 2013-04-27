@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSemptomTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSemptomEmpty}" rendered="#{semptomController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{semptomController.items.rowCount > 0}">
+                    <h:outputText value="#{semptomController.pagination.pageFirstItem + 1}..#{semptomController.pagination.pageLastItem + 1}/#{semptomController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{semptomController.previous}" value="#{bundle.Previous} #{semptomController.pagination.pageSize}" rendered="#{semptomController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{semptomController.next}" value="#{bundle.Next} #{semptomController.pagination.pageSize}" rendered="#{semptomController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{semptomController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSemptomTitle_sempID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sempID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSemptomTitle_sempIsmi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sempIsmi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSemptomTitle_sempGroup}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sempGroup}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{semptomController.prepareView}" value="#{bundle.ListSemptomViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{semptomController.prepareEdit}" value="#{bundle.ListSemptomEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{semptomController.destroy}" value="#{bundle.ListSemptomDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{semptomController.prepareCreate}" value="#{bundle.ListSemptomCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSemptomIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

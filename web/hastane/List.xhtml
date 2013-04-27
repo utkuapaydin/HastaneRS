@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHastaneTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListHastaneEmpty}" rendered="#{hastaneController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{hastaneController.items.rowCount > 0}">
+                    <h:outputText value="#{hastaneController.pagination.pageFirstItem + 1}..#{hastaneController.pagination.pageLastItem + 1}/#{hastaneController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{hastaneController.previous}" value="#{bundle.Previous} #{hastaneController.pagination.pageSize}" rendered="#{hastaneController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{hastaneController.next}" value="#{bundle.Next} #{hastaneController.pagination.pageSize}" rendered="#{hastaneController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{hastaneController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneTitle_hasID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hasID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneTitle_hasIsmi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hasIsmi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneTitle_hasAdres}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hasAdres}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneTitle_HTc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.HTc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneTitle_hasRezSuresi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hasRezSuresi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneTitle_hasOglenBas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hasOglenBas}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneTitle_hasOglenBit}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hasOglenBit}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneTitle_hasMesaiBas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hasMesaiBas}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHastaneTitle_hasMesaiBit}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hasMesaiBit}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{hastaneController.prepareView}" value="#{bundle.ListHastaneViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{hastaneController.prepareEdit}" value="#{bundle.ListHastaneEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{hastaneController.destroy}" value="#{bundle.ListHastaneDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{hastaneController.prepareCreate}" value="#{bundle.ListHastaneCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListHastaneIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

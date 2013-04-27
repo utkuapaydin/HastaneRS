@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateGuncelillerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateGuncelillerLabel_plaka}" for="plaka" />
+                    <h:inputText id="plaka" value="#{guncelillerController.selected.plaka}" title="#{bundle.CreateGuncelillerTitle_plaka}" required="true" requiredMessage="#{bundle.CreateGuncelillerRequiredMessage_plaka}"/>
+                    <h:outputLabel value="#{bundle.CreateGuncelillerLabel_il}" for="il" />
+                    <h:inputText id="il" value="#{guncelillerController.selected.il}" title="#{bundle.CreateGuncelillerTitle_il}" />
+                    <h:outputLabel value="#{bundle.CreateGuncelillerLabel_siralama}" for="siralama" />
+                    <h:inputText id="siralama" value="#{guncelillerController.selected.siralama}" title="#{bundle.CreateGuncelillerTitle_siralama}" required="true" requiredMessage="#{bundle.CreateGuncelillerRequiredMessage_siralama}"/>
+                    <h:outputLabel value="#{bundle.CreateGuncelillerLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{guncelillerController.selected.id}" title="#{bundle.CreateGuncelillerTitle_id}" required="true" requiredMessage="#{bundle.CreateGuncelillerRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateGuncelillerLabel_kod}" for="kod" />
+                    <h:inputText id="kod" value="#{guncelillerController.selected.kod}" title="#{bundle.CreateGuncelillerTitle_kod}" required="true" requiredMessage="#{bundle.CreateGuncelillerRequiredMessage_kod}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{guncelillerController.create}" value="#{bundle.CreateGuncelillerSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{guncelillerController.prepareList}" value="#{bundle.CreateGuncelillerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateGuncelillerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

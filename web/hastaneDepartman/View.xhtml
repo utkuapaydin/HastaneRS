@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewHastaneDepartmanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewHastaneDepartmanLabel_HDepID}"/>
+                    <h:outputText value="#{hastaneDepartmanController.selected.HDepID}" title="#{bundle.ViewHastaneDepartmanTitle_HDepID}"/>
+                    <h:outputText value="#{bundle.ViewHastaneDepartmanLabel_hasId}"/>
+                    <h:outputText value="#{hastaneDepartmanController.selected.hasId}" title="#{bundle.ViewHastaneDepartmanTitle_hasId}"/>
+                    <h:outputText value="#{bundle.ViewHastaneDepartmanLabel_depID}"/>
+                    <h:outputText value="#{hastaneDepartmanController.selected.depID}" title="#{bundle.ViewHastaneDepartmanTitle_depID}"/>
+                    <h:outputText value="#{bundle.ViewHastaneDepartmanLabel_HDepOlusturan}"/>
+                    <h:outputText value="#{hastaneDepartmanController.selected.HDepOlusturan}" title="#{bundle.ViewHastaneDepartmanTitle_HDepOlusturan}"/>
+                    <h:outputText value="#{bundle.ViewHastaneDepartmanLabel_HDepOlusZamani}"/>
+                    <h:outputText value="#{hastaneDepartmanController.selected.HDepOlusZamani}" title="#{bundle.ViewHastaneDepartmanTitle_HDepOlusZamani}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{hastaneDepartmanController.destroyAndView}" value="#{bundle.ViewHastaneDepartmanDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewHastaneDepartmanEditLink}"/>
+                <br />
+                <h:commandLink action="#{hastaneDepartmanController.prepareCreate}" value="#{bundle.ViewHastaneDepartmanCreateLink}" />
+                <br />
+                <h:commandLink action="#{hastaneDepartmanController.prepareList}" value="#{bundle.ViewHastaneDepartmanShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewHastaneDepartmanIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

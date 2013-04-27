@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateYorumlarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateYorumlarLabel_yorID}" for="yorID" />
+                    <h:inputText id="yorID" value="#{yorumlarController.selected.yorID}" title="#{bundle.CreateYorumlarTitle_yorID}" required="true" requiredMessage="#{bundle.CreateYorumlarRequiredMessage_yorID}"/>
+                    <h:outputLabel value="#{bundle.CreateYorumlarLabel_yorDetay}" for="yorDetay" />
+                    <h:inputText id="yorDetay" value="#{yorumlarController.selected.yorDetay}" title="#{bundle.CreateYorumlarTitle_yorDetay}" required="true" requiredMessage="#{bundle.CreateYorumlarRequiredMessage_yorDetay}"/>
+                    <h:outputLabel value="#{bundle.CreateYorumlarLabel_yorZamani}" for="yorZamani" />
+                    <h:inputText id="yorZamani" value="#{yorumlarController.selected.yorZamani}" title="#{bundle.CreateYorumlarTitle_yorZamani}" required="true" requiredMessage="#{bundle.CreateYorumlarRequiredMessage_yorZamani}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateYorumlarLabel_yorDerecesi}" for="yorDerecesi" />
+                    <h:inputText id="yorDerecesi" value="#{yorumlarController.selected.yorDerecesi}" title="#{bundle.CreateYorumlarTitle_yorDerecesi}" required="true" requiredMessage="#{bundle.CreateYorumlarRequiredMessage_yorDerecesi}"/>
+                    <h:outputLabel value="#{bundle.CreateYorumlarLabel_yorRezervasyon}" for="yorRezervasyon" />
+                    <h:inputText id="yorRezervasyon" value="#{yorumlarController.selected.yorRezervasyon}" title="#{bundle.CreateYorumlarTitle_yorRezervasyon}" required="true" requiredMessage="#{bundle.CreateYorumlarRequiredMessage_yorRezervasyon}"/>
+                    <h:outputLabel value="#{bundle.CreateYorumlarLabel_yorOnay}" for="yorOnay" />
+                    <h:inputText id="yorOnay" value="#{yorumlarController.selected.yorOnay}" title="#{bundle.CreateYorumlarTitle_yorOnay}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{yorumlarController.create}" value="#{bundle.CreateYorumlarSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{yorumlarController.prepareList}" value="#{bundle.CreateYorumlarShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateYorumlarIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMahalleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMahalleLabel_mahID}" for="mahID" />
+                    <h:inputText id="mahID" value="#{mahalleController.selected.mahID}" title="#{bundle.CreateMahalleTitle_mahID}" required="true" requiredMessage="#{bundle.CreateMahalleRequiredMessage_mahID}"/>
+                    <h:outputLabel value="#{bundle.CreateMahalleLabel_mahIsmi}" for="mahIsmi" />
+                    <h:inputText id="mahIsmi" value="#{mahalleController.selected.mahIsmi}" title="#{bundle.CreateMahalleTitle_mahIsmi}" required="true" requiredMessage="#{bundle.CreateMahalleRequiredMessage_mahIsmi}"/>
+                    <h:outputLabel value="#{bundle.CreateMahalleLabel_semID}" for="semID" />
+                    <h:inputText id="semID" value="#{mahalleController.selected.semID}" title="#{bundle.CreateMahalleTitle_semID}" required="true" requiredMessage="#{bundle.CreateMahalleRequiredMessage_semID}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mahalleController.create}" value="#{bundle.CreateMahalleSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{mahalleController.prepareList}" value="#{bundle.CreateMahalleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMahalleIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

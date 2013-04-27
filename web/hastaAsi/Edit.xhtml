@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditHastaAsiTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditHastaAsiLabel_haId}" for="haId" />
+                    <h:inputText id="haId" value="#{hastaAsiController.selected.haId}" title="#{bundle.EditHastaAsiTitle_haId}" required="true" requiredMessage="#{bundle.EditHastaAsiRequiredMessage_haId}"/>
+                    <h:outputLabel value="#{bundle.EditHastaAsiLabel_HTc}" for="HTc" />
+                    <h:inputText id="HTc" value="#{hastaAsiController.selected.HTc}" title="#{bundle.EditHastaAsiTitle_HTc}" required="true" requiredMessage="#{bundle.EditHastaAsiRequiredMessage_HTc}"/>
+                    <h:outputLabel value="#{bundle.EditHastaAsiLabel_AId}" for="AId" />
+                    <h:inputText id="AId" value="#{hastaAsiController.selected.AId}" title="#{bundle.EditHastaAsiTitle_AId}" required="true" requiredMessage="#{bundle.EditHastaAsiRequiredMessage_AId}"/>
+                    <h:outputLabel value="#{bundle.EditHastaAsiLabel_HAZamani}" for="HAZamani" />
+                    <h:inputText id="HAZamani" value="#{hastaAsiController.selected.HAZamani}" title="#{bundle.EditHastaAsiTitle_HAZamani}" required="true" requiredMessage="#{bundle.EditHastaAsiRequiredMessage_HAZamani}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{hastaAsiController.update}" value="#{bundle.EditHastaAsiSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditHastaAsiViewLink}"/>
+                <br />
+                <h:commandLink action="#{hastaAsiController.prepareList}" value="#{bundle.EditHastaAsiShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditHastaAsiIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

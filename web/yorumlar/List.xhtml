@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListYorumlarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListYorumlarEmpty}" rendered="#{yorumlarController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{yorumlarController.items.rowCount > 0}">
+                    <h:outputText value="#{yorumlarController.pagination.pageFirstItem + 1}..#{yorumlarController.pagination.pageLastItem + 1}/#{yorumlarController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{yorumlarController.previous}" value="#{bundle.Previous} #{yorumlarController.pagination.pageSize}" rendered="#{yorumlarController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{yorumlarController.next}" value="#{bundle.Next} #{yorumlarController.pagination.pageSize}" rendered="#{yorumlarController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{yorumlarController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYorumlarTitle_yorID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.yorID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYorumlarTitle_yorDetay}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.yorDetay}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYorumlarTitle_yorZamani}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.yorZamani}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYorumlarTitle_yorDerecesi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.yorDerecesi}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYorumlarTitle_yorRezervasyon}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.yorRezervasyon}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListYorumlarTitle_yorOnay}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.yorOnay}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{yorumlarController.prepareView}" value="#{bundle.ListYorumlarViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{yorumlarController.prepareEdit}" value="#{bundle.ListYorumlarEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{yorumlarController.destroy}" value="#{bundle.ListYorumlarDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{yorumlarController.prepareCreate}" value="#{bundle.ListYorumlarCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListYorumlarIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
